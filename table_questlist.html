@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <script type="text/javascript" src="vender/jquery/jquery-3.4.1.min.js"></script>
+
+      <script type="text/javascript" src="function/include.js"></script>
+
+      <script type="text/javascript" src="function/func.js"></script>
+
+
+      <!--Datatable-->
+          <script type="text/javascript" src="//unpkg.com/jquery@1.11.3"></script>
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+      <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json">
+
+
+      <script >
+      $(document).ready( function () {
+        $('input#id, input#minlevel, input#name, input#active, input#step1, input#step2, input#step3, input#step4, input#pre, input#reward1, input#reward1num, input#reward2, input#reward2num, input#reward3, input#reward3num, input#stepnum, input#worknum, input#workstep, input#relateitem').characterCounter();
+
+        $('#table').DataTable({
+          "language": {
+            "url" : "//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json",
+            "decimal":        "",
+            "emptyTable":     "ไม่มีรายการข้อมูล",
+            "info":           "แสดงรายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+            "infoEmpty":      "ไม่มีรายการข้อมูล",
+            "infoFiltered":   "(กรองจากทั้งหมด _MAX_ รายการ)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "แสดง  _MENU_ รายการ",
+            "loadingRecords": "กำลังโหลดข้อมูล...",
+            "processing":     "กำลังประมวลผล...",
+            "search":         "ค้นหา:",
+            "zeroRecords":    "ไม่พบรายการที่ค้นหา",
+            "paginate": {
+                "first":      "หน้าแรก",
+                "last":       "หน้าสุดท้าย",
+                "next":       "ถัดไป",
+                "previous":   "ก่อนหน้า"
+            },
+            "aria": {
+                "sortAscending":  ": เรียงข้อมูลจากน้อยไปมาก",
+                "sortDescending": ": เรียงข้อมูลจากมากไปน้อย"
+            }
+          },
+
+          "processing": true,
+          "serverSide": true,
+          "ajax": "api/select/datatable_questlist.php",
+
+          "scrollX" : true,
+          "scrollY" : 400,
+
+
+        });
+
+      });
+      </script>
+
+    </head>
+      <title>Questlist</title>
+
+
+    <body id="bd">
+
+        <main>
+          <header>
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+              <li><div class="user-view">
+                <div class="background">
+                  <img src="img/logo2.png">
+                </div>
+                <a href="#"><img class="circle" src="img/bg_log.png"></a>
+                <a href="#" class="uname" style="font-size:20px;"></a>
+              </div>
+            </li>
+            <li class="pg-hide sp-hide tt-hide"><a class="subheader">Main List</a></li>
+            <li class="pg-hide sp-hide tt-hide active"><a href="homepage.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">view_list</i>Tables<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li class="tt-hide sp-hide"><a href="table_equiplist.html"><i class="material-icons left">chevron_right</i>Equiplist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_itemlist.html"><i class="material-icons left">chevron_right</i>Itemlist</a></li>
+                          <li class="tt-hide sp-hide active"><a href="table_questlist.html"><i class="material-icons left">chevron_right</i>Questlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_spelllist.html"><i class="material-icons left">chevron_right</i>Spellist</a></li>
+                          <li class="tt-hide "><a href="table_news.html"><i class="material-icons left">chevron_right</i>News</a></li>
+                          <li ><a href="table_bugs.html"><i class="material-icons left">chevron_right</i>Bugs</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">show_chart</i>Charts<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                    
+                          <li class=""><a href="report_bugs.html"><i class="material-icons left">bug_report</i>Bug Report</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li class="pg-hide tt-hide sp-hide"><div class="divider"></div></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="subheader">Sub List</a></li>
+              <li hidden ><a class="waves-effect" href="profile.html"><i class="material-icons left">account_circle</i>Profile</a></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="waves-effect" href="table_usermanage.html"><i class="material-icons left">supervisor_account</i>Users Management </a></li>
+            </ul>
+          </header>
+
+          <nav>
+            <div class="nav-wrapper ">
+              <!--<a href="#" class="brand-logo"><img style="width:120px; padding-left:20px; padding-top:7px;" src="img/logo2.png"></a>-->
+              <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                <li><a  class="pos tooltipped" data-position="bottom" data-tooltip="ตำแหน่งงาน"></a></li>
+                <li><a  class="status tooltipped" data-position="bottom" data-tooltip="สถานะสิทธิ์"></a></li>
+                <li><a href="#" id="logout_btn" >Logout<i class="material-icons right">exit_to_app</i></a></li>
+              </ul>
+            </div>
+          </nav>
+
+
+        <div class="container" style="margin-top:2%;">
+          <div class="row">
+              <button data-target='modal1'  class="btn blue lighten-1 white-text right modal-trigger"><i class="material-icons left">add</i>Add new</button>
+          </div>
+            <table id="table" class="display" >
+                <thead>
+                    <tr>
+                      <th style="width:150px;">Action</th>
+                      <th>ID</th>
+                      <th>MINLEVEL</th>
+                      <th style="width:150px;">NAME</th>
+                      <th>ACTIVE</th>
+                      <th style="width:150px;">STEP1</th>
+                      <th style="width:150px;">STEP2</th>
+                      <th style="width:150px;">STEP3</th>
+                      <th style="width:150px;">STEP4</th>
+                      <th style="width:200px;">ACCEPTNPC</th>
+                      <th style="width:500px;">ACCEPTTALK</th>
+                      <th>PRE</th>
+                      <th>REWARD1</th>
+                      <th>REWARD1NUM</th>
+                      <th>REWARD2</th>
+                      <th>REWARD2NUM</th>
+                      <th>REWARD3</th>
+                      <th>REWaRD3NUM</th>
+                      <th>STEPNUM</th>
+                      <th>WORKNUM</th>
+                      <th>WORKSTEP</th>
+                      <th style="width:200px;">FINISHTEXT</th>
+                      <th>FINISHREWARD</th>
+                      <th>RELATEITEM</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Insert to Questlist :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="id" type="text" data-length="6" placeholder="ไม่เกิน 6 หลัก">
+                <label for="id">ID</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="minlevel" type="text" data-length="11" placeholder="ไม่เกิน 11 หลัก">
+                <label for="minlevel">Min Level</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="name" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="name">Name</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="active" type="text" data-length="4" placeholder="ไม่เกิน 4 หลัก">
+                <label for="active">Active</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="step1" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="step1">Step 1</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="step2" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="step2">Step 2</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="step3" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="step3">Step 3</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="step4" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="step4">Step 4</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="acceptnpc" class="materialize-textarea" ></textarea>
+                <label for="acceptnpc">Accept NPC</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="accepttalk" class="materialize-textarea" ></textarea>
+                <label for="accepttalk">Accept Talk</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="pre" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="pre">PRE</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="reward1" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="reward1">Reward 1</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="reward1num" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="reward1num">Reward 1 Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="reward2" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="reward2">Reward 2</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="reward2num" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="reward2num">Reward 2 Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="reward3" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="reward3">Reward 3</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="reward3num" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="reward3num">Reward 3 Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="stepnum" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="stepnum">Step Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="worknum" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="worknum">Work Num</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="finishtext" class="materialize-textarea" ></textarea>
+                <label for="finishtext">Finish Text</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="finishreward" class="materialize-textarea" ></textarea>
+                <label for="finishreward">Finish Reward</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="relateitem" type="text" data-length="6" placeholder="ไม่เกิน 6 หลัก">
+                <label for="relateitem">Relate Item</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="InsertRow()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Edit to Questlist :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="edit_id" type="text" data-length="6" placeholder="ไม่เกิน 6 หลัก">
+                <label for="edit_id">ID</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_minlevel" type="text" data-length="11" placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_minlevel">Min Level</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_name" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_name">Name</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_active" type="text" data-length="4" placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_active">Active</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_step1" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_step1">Step 1</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_step2" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_step2">Step 2</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_step3" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_step3">Step 3</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_step4" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_step4">Step 4</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="edit_acceptnpc" class="materialize-textarea" ></textarea>
+                <label for="edit_acceptnpc">Accept NPC</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="edit_accepttalk" class="materialize-textarea" ></textarea>
+                <label for="edit_accepttalk">Accept Talk</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_pre" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_pre">PRE</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_reward1" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="edit_reward1">Reward 1</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_reward1num" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_reward1num">Reward 1 Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_reward2" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="edit_reward2">Reward 2</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_reward2num" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_reward2num">Reward 2 Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_reward3" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="edit_reward3">Reward 3</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_reward3num" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_reward3num">Reward 3 Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_stepnum" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_stepnum">Step Num</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_worknum" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_worknum">Work Num</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="edit_finishtext" class="materialize-textarea" ></textarea>
+                <label for="edit_finishtext">Finish Text</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="edit_finishreward" class="materialize-textarea" ></textarea>
+                <label for="edit_finishreward">Finish Reward</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_relateitem" type="text" data-length="6" placeholder="ไม่เกิน 6 หลัก">
+                <label for="edit_relateitem">Relate Item</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="Edit()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+        </main>
+
+        <footer>
+          <div class="container center-align">
+            <span>Copyright &copy; Magic Fortress</span>
+          </div>
+        </footer>
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script>
+      //Delete row
+      function DeleteRow(id){
+        let r = confirm("ต้องการลบข้อมูล?");
+              if(r == true){
+                $.post("api/delete/delete_questlist.php",{
+                  id : id,
+                },function(data){
+                  alert('Delete Success!');
+                  $('#table').DataTable().draw();
+                });
+              }else{
+                
+              }
+      }
+
+      function InsertRow(){
+
+          var id = $("#id").val();
+          var minlevel = $("#minlevel").val();
+          var name = $("#name").val();
+          var active = $("#active").val();
+          var step1 = $("#step1").val();
+          var step2 = $("#step2").val();
+          var step3 = $("#step3").val();
+          var step4 = $("#step4").val();
+          var acceptnpc = $("#acceptnpc").val();
+          var accepttalk = $("#accepttalk").val();
+          var pre = $("#pre").val();
+          var reward1 = $("#reward1").val();
+          var reward1num = $("#reward1num").val();
+          var reward2 = $("#reward2").val();
+          var reward2num = $("#reward2num").val();
+          var reward3 = $("#reward3").val();
+          var reward3num = $("#reward3num").val();
+          var stepnum = $("#stepnum").val();
+          var worknum = $("#worknum").val();
+          var workstep = $("#workstep").val();
+          var finishtext = $("#finishtext").val();
+          var finishreward = $("#finishreward").val();
+          var relateitem = $("#relateitem").val();
+
+            $.post("api/insert/add_questlist.php",{
+                id : id,
+                minlevel : minlevel,
+                name : name,
+                active : active,
+                step1 : step1,
+                step2 : step2,
+                step3 : step3,
+                step4 : step4,
+                acceptnpc : acceptnpc,
+                accepttalk : accepttalk,
+                pre : pre,
+                reward1 : reward1,
+                reward1num : reward1num,
+                reward2 : reward2,
+                reward2num : reward2num,
+                reward3 : reward3,
+                reward3num : reward3num,
+                stepnum : stepnum,
+                worknum : worknum,
+                workstep : workstep,
+                finishtext : finishtext,
+                finishreward : fnishreward,
+                relateitem : relateitem,
+            },function(data){
+              alert('เพิ่มรายการเสร็จสิ้น');
+              $('#table').DataTable().draw();
+            });
+      }
+
+      //Edit row
+      function EditRow(id){
+        $.post("api/select/questlist.php",{
+            id : id,
+        },function(data){
+          $("#edit_id").attr("value",data.col.QUEST_ID);
+          $("#edit_minlevel").attr("value",data.col.QUEST_MINLEVEL);
+          $("#edit_name").attr("value",data.col.QUEST_NAME);
+          $("#edit_active").attr("value",data.col.QUEST_ACTIVE);
+          $("#edit_step1").attr("value",data.col.QUEST_STEP1);
+          $("#edit_step2").attr("value",data.col.QUEST_STEP2);
+          $("#edit_step3").attr("value",data.col.QUEST_STEP3);
+          $("#edit_step4").attr("value",data.col.QUEST_STEP4);
+          $("#edit_acceptnpc").html(data.col.QUEST_ACCEPTTALK);
+          $("#edit_accepttalk").html(data.col.QUEST_ACCEPTTALK);
+          $("#edit_pre").attr("value",data.col.QUEST_PRE);
+          $("#edit_reward1").attr("value",data.col.QUEST_REWARD1);
+          $("#edit_reward1num").attr("value",data.col.QUEST_REWARD1NUM);
+          $("#edit_reward2").attr("value",data.col.QUEST_REWARD2);
+          $("#edit_reward2num").attr("value",data.col.QUEST_REWARD2NUM);
+          $("#edit_reward3").attr("value",data.col.QUEST_REWARD3);
+          $("#edit_reward3num").attr("value",data.col.QUEST_REWARD3NUM);
+          $("#edit_stepnum").attr("value",data.col.QUEST_STEPNUM);
+          $("#edit_worknum").attr("value",data.col.QUEST_WORKNUM);
+          $("#edit_workstep").attr("value",data.col.QUEST_WORKSTEP);
+          $("#edit_finishtext").html(data.col.QUEST_FINISHTEXT);
+          $("#edit_finishreward").html(data.col.QUEST_FINISHREWARD);
+          $("#edit_relateitem").attr("value",data.col.QUEST_RELATEITEM);
+
+        },'json').done(function(){
+          M.textareaAutoResize($('#edit_acceptnpc'));
+          M.textareaAutoResize($('#edit_accepttalk'));
+          M.textareaAutoResize($('#edit_finishtext'));
+          M.textareaAutoResize($('#edit_finishreward'));
+        });
+
+      }
+
+
+      function Edit(){
+        var d ={
+          id : $("#edit_id").val(),
+          minlevel :$("#edit_minlevel").val(),
+          name : $("#edit_name").val(),
+          active : $("edit_#active").val(),
+          step1 : $("#edit_step1").val(),
+          step2 : $("#edit_step2").val(),
+          step3 : $("#edit_step3").val(),
+          step4 : $("#edit_step4").val(),
+          acceptnpc : $("#edit_acceptnpc").val(),
+          accepttalk : $("#edit_accepttalk").val(),
+          pre : $("#edit_pre").val(),
+          reward1 : $("#edit_reward1").val(),
+          reward1num : $("#edit_reward1num").val(),
+          reward2 : $("#edit_reward2").val(),
+          reward2num : $("#edit_reward2num").val(),
+          reward3 : $("#edit_reward3").val(),
+          reward3num : $("#edit_reward3num").val(),
+          stepnum :  $("#edit_stepnum").val(),
+          worknum : $("#edit_worknum").val(),
+          workstep : $("#edit_workstep").val(),
+          finishtext : $("#edit_finishtext").val(),
+          fnishreward : $("#edit_fnishreward").val(),
+          relateitem : $("#edit_relateitem").val(),
+        }
+          $.post("api/update/update_questlist.php",d,function(data){
+            alert('Update Success!');
+            $('#table').DataTable().draw();
+          });
+      }
+
+      </script>
+    </body>
+  </html>

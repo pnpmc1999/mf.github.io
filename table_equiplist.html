@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <script type="text/javascript" src="vender/jquery/jquery-3.4.1.min.js"></script>
+
+      <script type="text/javascript" src="function/include.js"></script>
+
+      <script type="text/javascript" src="function/func.js"></script>
+
+
+      <!--Datatable-->
+
+      <script type="text/javascript" src="//unpkg.com/jquery@1.11.3"></script>
+
+      <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json">
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
+      <script charset="utf8">
+      $(document).ready( function () {
+        $('input#servername, input#level, input#name, textarea#desc, input#atk, input#def, input#hp, input#sp, input#pre, input#luk, input#addgold, input#addexp, textarea#special ').characterCounter();
+
+
+        $('#table').DataTable({
+          "language": {
+            "url" : "//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json",
+            "decimal":        "",
+            "emptyTable":     "ไม่มีรายการข้อมูล",
+            "info":           "แสดงรายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+            "infoEmpty":      "ไม่มีรายการข้อมูล",
+            "infoFiltered":   "(กรองจากทั้งหมด _MAX_ รายการ)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "แสดง  _MENU_ รายการ",
+            "loadingRecords": "กำลังโหลดข้อมูล...",
+            "processing":     "กำลังประมวลผล...",
+            "search":         "ค้นหา:",
+            "zeroRecords":    "ไม่พบรายการที่ค้นหา",
+            "paginate": {
+                "first":      "หน้าแรก",
+                "last":       "หน้าสุดท้าย",
+                "next":       "ถัดไป",
+                "previous":   "ก่อนหน้า"
+            },
+            "aria": {
+                "sortAscending":  ": เรียงข้อมูลจากน้อยไปมาก",
+                "sortDescending": ": เรียงข้อมูลจากมากไปน้อย"
+            }
+          },
+
+          "processing": true,
+          "serverSide": true,
+          "ajax": "api/select/datatable_equiplist.php",
+
+          "scrollX" : true,
+          "scrollY" : 400,
+
+        });
+
+      });
+      </script>
+
+    </head>
+      <title>Equiplist</title>
+
+
+    <body id="bd">
+
+        <main>
+          <header>
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+              <li><div class="user-view">
+                <div class="background">
+                  <img src="img/logo2.png">
+                </div>
+                <a href="#"><img class="circle" src="img/bg_log.png"></a>
+                <a href="#" class="uname" style="font-size:20px;"></a>
+              </div>
+            </li>
+            <li class="pg-hide sp-hide tt-hide"><a class="subheader">Main List</a></li>
+            <li class="pg-hide sp-hide tt-hide active"><a href="homepage.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">view_list</i>Tables<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li class="tt-hide sp-hide active"><a href="table_equiplist.html"><i class="material-icons left">chevron_right</i>Equiplist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_itemlist.html"><i class="material-icons left">chevron_right</i>Itemlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_questlist.html"><i class="material-icons left">chevron_right</i>Questlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_spelllist.html"><i class="material-icons left">chevron_right</i>Spellist</a></li>
+                          <li class="tt-hide "><a href="table_news.html"><i class="material-icons left">chevron_right</i>News</a></li>
+                          <li ><a href="table_bugs.html"><i class="material-icons left">chevron_right</i>Bugs</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">show_chart</i>Charts<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                         
+                          <li class=""><a href="report_bugs.html"><i class="material-icons left">bug_report</i>Bug Report</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li class="pg-hide tt-hide sp-hide"><div class="divider"></div></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="subheader">Sub List</a></li>
+              <li hidden ><a class="waves-effect" href="profile.html"><i class="material-icons left">account_circle</i>Profile</a></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="waves-effect" href="table_usermanage.html"><i class="material-icons left">supervisor_account</i>Users Management </a></li>
+            </ul>
+          </header>
+
+          <nav>
+            <div class="nav-wrapper ">
+              <!--<a href="#" class="brand-logo"><img style="width:120px; padding-left:20px; padding-top:7px;" src="img/logo2.png"></a>-->
+              <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                <li><a  class="pos tooltipped" data-position="bottom" data-tooltip="ตำแหน่งงาน"></a></li>
+                <li><a  class="status tooltipped" data-position="bottom" data-tooltip="สถานะสิทธิ์"></a></li>
+                <li><a href="#" id="logout_btn" >Logout<i class="material-icons right">exit_to_app</i></a></li>
+              </ul>
+            </div>
+          </nav>
+
+
+        <div class="container" style="margin-top:2%;">
+          <div class="row">
+              <button data-target='modal1'  class="btn blue lighten-1 white-text right modal-trigger"><i class="material-icons left">add</i>Add new</button>
+          </div>
+            <table id="table" class="display"  >
+                <thead>
+                    <tr>
+                      <th style="width:150px;">Action</th>
+                      <th>ID</th>
+                      <th>SERVERNAME</th>
+                      <th>LEVEL</th>
+                      <th style="width:150px;">NAME</th>
+                      <th style="width:200px;">DESC</th>
+                      <th>ATK</th>
+                      <th>DEF</th>
+                      <th>HP</th>
+                      <th>SP</th>
+                      <th>PRE</th>
+                      <th>LUK</th>
+                      <th>ADDGOLD</th>
+                      <th>ADDEXP</th>
+                      <th>ADDSPECIAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Insert to Equiplist :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="servername" type="text" data-length="50" placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="servername">Servername</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="level" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="level">Level</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="name" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="name">Name</label>
+              </div>
+              <div class="input-field col s12">
+                 <textarea id="desc" class="materialize-textarea"  data-length="200"></textarea>
+                <label for="desc">Description</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="atk" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="atk">ATK</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="def" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="def">DEF</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="hp" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="hp">HP</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="sp" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="sp">SP</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="pre" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="pre">PRE</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="luk" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="luk">LUK</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="addgold" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="addgold">ADD GOLD</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="addexp" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="addexp">ADD EXP</label>
+              </div>
+              <div class="input-field col s12">
+                 <textarea id="special" class="materialize-textarea"  data-length="200"></textarea>
+                <label for="special">SPECIAL</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="InsertRow()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Edit to Equiplist :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="id" type="text" hidden>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_servername" type="text" data-length="50" placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="edit_servername">Servername</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_level" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_level">Level</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_name" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_name">Name</label>
+              </div>
+              <div class="input-field col s12">
+                 <textarea id="edit_desc" class="materialize-textarea active"  data-length="200"></textarea>
+                <label for="edit_desc">Description</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="edit_atk" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_atk">ATK</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="edit_def" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_def">DEF</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="edit_hp" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_hp">HP</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="edit_sp" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_sp">SP</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="edit_pre" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_pre">PRE</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="edit_luk" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_luk">LUK</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_addgold" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_addgold">ADD GOLD</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_addexp" type="text"  data-length="11"  placeholder="ไม่เกิน 11 หลัก">
+                <label for="edit_addexp">ADD EXP</label>
+              </div>
+              <div class="input-field col s12">
+                 <textarea id="edit_special" class="materialize-textarea active"  data-length="200"></textarea>
+                <label for="edit_special">SPECIAL</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="Edit()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+        </main>
+
+        <footer>
+          <div class="container center-align">
+            <span>Copyright &copy; Magic Fortress</span>
+          </div>
+        </footer>
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script>
+      //Delete row
+      function DeleteRow(id){
+        let r = confirm("ต้องการลบข้อมูล?");
+              if(r == true){
+                $.post("api/delete/delete_equiplist.php",{
+                  id : id,
+                },function(data){
+                  alert('Delete Success!');
+                  $('#table').DataTable().draw();
+                });
+              }else{
+                
+              }
+         
+      }
+
+      function InsertRow(){
+
+          var servername = $("#servername").val();
+          var level = $("#level").val();
+          var name = $("#name").val();
+          var desc = $("#desc").val();
+          var atk = $("#atk").val();
+          var def = $("#def").val();
+          var hp = $("#hp").val();
+          var sp = $("#sp").val();
+          var pre = $("#pre").val();
+          var luk = $("#luk").val();
+          var addgold = $("#addgold").val();
+          var addexp = $("#addexp").val();
+          var special = $("#special").val();
+
+
+            $.post("api/insert/add_equiplist.php",{
+                servername : servername,
+                level : level,
+                name : name,
+                desc : desc,
+                atk : atk,
+                def : def,
+                hp : hp,
+                sp : sp,
+                pre : pre,
+                luk : luk,
+                addgold : addgold,
+                addexp : addexp,
+                special : special,
+            },function(data){
+              alert('เพิ่มรายการเสร็จสิ้น');
+              $('#table').DataTable().draw();
+            });
+      }
+
+      //Edit row
+      function EditRow(id){
+        $.post("api/select/equiplist.php",{
+            id : id,
+        },function(data){
+          $("#id").attr("value",data.col.EQUIP_ID);
+          $("#edit_servername").attr("value",data.col.EQUIP_SERVERNAME);
+          $("#edit_level").attr("value",data.col.EQUIP_LEVEL);
+          $("#edit_name").attr("value",data.col.EQUIP_NAME);
+          $("#edit_desc").html(data.col.EQUIP_DESC);
+          $("#edit_atk").attr("value",data.col.EQUIP_ATK);
+          $("#edit_def").attr("value",data.col.EQUIP_DEF);
+          $("#edit_hp").attr("value",data.col.EQUIP_HP);
+          $("#edit_sp").attr("value",data.col.EQUIP_SP);
+          $("#edit_pre").attr("value",data.col.EQUIP_PRE);
+          $("#edit_luk").attr("value",data.col.EQUIP_LUK);
+          $("#edit_addgold").attr("value",data.col.EQUIP_ADDGOLD);
+          $("#edit_addexp").attr("value",data.col.EQUIP_ADDEXP);
+          $("#edit_special").html(data.col.EQUIP_SPECIAL);
+        },'json').done(function(){
+              M.textareaAutoResize($('#edit_special'));
+        });
+
+      }
+
+
+      function Edit(){
+        var d ={
+          id : $("#id").val(),
+          servername : $("#edit_servername").val(),
+          level : $("#edit_level").val(),
+          name : $("#edit_name").val(),
+          desc : $("#edit_desc").val(),
+          atk : $("#edit_atk").val(),
+          def : $("#edit_def").val(),
+          hp : $("#edit_hp").val(),
+          sp : $("#edit_sp").val(),
+          pre : $("#edit_pre").val(),
+          luk : $("#edit_luk").val(),
+          addgold : $("#edit_addgold").val(),
+          addexp : $("#edit_addexp").val(),
+          special : $("#edit_special").val(),
+        }
+          $.post("api/update/update_equiplist.php",d,function(data){
+            alert('Update Success!');
+            $('#table').DataTable().draw();
+          });
+      }
+
+
+      </script>
+    </body>
+  </html>

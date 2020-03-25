@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <script type="text/javascript" src="vender/jquery/jquery-3.4.1.min.js"></script>
+
+      <script type="text/javascript" src="function/include.js"></script>
+
+      <script type="text/javascript" src="function/func.js"></script>
+
+
+      <!--Datatable-->
+          <script type="text/javascript" src="//unpkg.com/jquery@1.11.3"></script>
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+      <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json">
+
+
+      <script >
+      $(document).ready( function () {
+        $('input#name, textarea#desc, input#consumable, input#code, input#isdropinvest, input#craftfrom1, input#craftfrom1qty, input#craftfrom2, input#craftfrom2qty, input#craftfrom3, input#craftfrom3qty, input#crafttype').characterCounter();
+
+        $('#table').DataTable({
+          "language": {
+            "url" : "//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json",
+            "decimal":        "",
+            "emptyTable":     "ไม่มีรายการข้อมูล",
+            "info":           "แสดงรายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+            "infoEmpty":      "ไม่มีรายการข้อมูล",
+            "infoFiltered":   "(กรองจากทั้งหมด _MAX_ รายการ)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "แสดง  _MENU_ รายการ",
+            "loadingRecords": "กำลังโหลดข้อมูล...",
+            "processing":     "กำลังประมวลผล...",
+            "search":         "ค้นหา:",
+            "zeroRecords":    "ไม่พบรายการที่ค้นหา",
+            "paginate": {
+                "first":      "หน้าแรก",
+                "last":       "หน้าสุดท้าย",
+                "next":       "ถัดไป",
+                "previous":   "ก่อนหน้า"
+            },
+            "aria": {
+                "sortAscending":  ": เรียงข้อมูลจากน้อยไปมาก",
+                "sortDescending": ": เรียงข้อมูลจากมากไปน้อย"
+            }
+          },
+
+          "processing": true,
+          "serverSide": true,
+          "ajax": "api/select/datatable_itemlist.php",
+
+          "scrollX" : true,
+          "scrollY" : 400,
+
+
+        });
+
+      });
+      </script>
+
+    </head>
+      <title>Itemlist</title>
+
+
+    <body id="bd">
+
+        <main>
+          <header>
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+              <li><div class="user-view">
+                <div class="background">
+                  <img src="img/logo2.png">
+                </div>
+                <a href="#"><img class="circle" src="img/bg_log.png"></a>
+                <a href="#" class="uname" style="font-size:20px;"></a>
+              </div>
+            </li>
+            <li class="pg-hide sp-hide tt-hide"><a class="subheader">Main List</a></li>
+            <li class="pg-hide sp-hide tt-hide active"><a href="homepage.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">view_list</i>Tables<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li class="tt-hide sp-hide"><a href="table_equiplist.html"><i class="material-icons left">chevron_right</i>Equiplist</a></li>
+                          <li class="tt-hide sp-hide active"><a href="table_itemlist.html"><i class="material-icons left">chevron_right</i>Itemlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_questlist.html"><i class="material-icons left">chevron_right</i>Questlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_spelllist.html"><i class="material-icons left">chevron_right</i>Spellist</a></li>
+                          <li class="tt-hide "><a href="table_news.html"><i class="material-icons left">chevron_right</i>News</a></li>
+                          <li ><a href="table_bugs.html"><i class="material-icons left">chevron_right</i>Bugs</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">show_chart</i>Charts<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                         
+                          <li class=""><a href="report_bugs.html"><i class="material-icons left">bug_report</i>Bug Report</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li class="pg-hide tt-hide sp-hide"><div class="divider"></div></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="subheader">Sub List</a></li>
+              <li hidden ><a class="waves-effect" href="profile.html"><i class="material-icons left">account_circle</i>Profile</a></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="waves-effect" href="table_usermanage.html"><i class="material-icons left">supervisor_account</i>Users Management </a></li>
+            </ul>
+          </header>
+
+          <nav>
+            <div class="nav-wrapper ">
+              <!--<a href="#" class="brand-logo"><img style="width:120px; padding-left:20px; padding-top:7px;" src="img/logo2.png"></a>-->
+              <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                <li><a  class="pos tooltipped" data-position="bottom" data-tooltip="ตำแหน่งงาน"></a></li>
+                <li><a  class="status tooltipped" data-position="bottom" data-tooltip="สถานะสิทธิ์"></a></li>
+                <li><a href="#" id="logout_btn" >Logout<i class="material-icons right">exit_to_app</i></a></li>
+              </ul>
+            </div>
+          </nav>
+
+
+        <div class="container" style="margin-top:2%;">
+          <div class="row">
+              <button data-target='modal1'  class="btn blue lighten-1 white-text right modal-trigger"><i class="material-icons left">add</i>Add new</button>
+          </div>
+            <table id="table" class="display">
+                <thead>
+                    <tr>
+                      <th style="width:150px;">Action</th>
+                      <th>ID</th>
+                      <th style="width:150px;">NAME</th>
+                      <th style="width:200px">DESC</th>
+                      <th>CONSUMABLE</th>
+                      <th>CODE</th>
+                      <th>ISDROPINVEST</th>
+                      <th>CRAFTFROM1</th>
+                      <th>CRAFTFROM1QTY</th>
+                      <th>CRAFTFROM2</th>
+                      <th>CRAFTFROM2QTY</th>
+                      <th>CRAFTFROM3</th>
+                      <th>CRAFTFROM3QTY</th>
+                      <th>CRAFTTYPE</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Insert to Itemlist :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="name" type="text" data-length="100" placeholder="ไม่เกิน 100 ตัวอักษร">
+                <label for="name">Name</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="desc" class="materialize-textarea"  data-length="255"></textarea>
+                <label for="desc">Description</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="consumable" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="consumable">Consumable</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="code" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="code">Code</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="isdropinvest" type="text"  data-length="1"  placeholder="ไม่เกิน 1 หลัก">
+                <label for="isdropinvest">Isdropinvest</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="craftfrom1" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="craftfrom1">Craftfrom1</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="craftfrom1qty" type="text"  data-length="6"  placeholder="ไม่เกิน 6 หลัก">
+                <label for="craftfrom1qty">Craftfrom1QTY</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="craftfrom2" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="craftfrom2">Craftfrom2</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="craftfrom2qty" type="text"  data-length="6"  placeholder="ไม่เกิน 6 หลัก">
+                <label for="craftfrom2qty">Craftfrom1QTY</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="craftfrom3" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="craftfrom3">Craftfrom3</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="craftfrom3qty" type="text"  data-length="6"  placeholder="ไม่เกิน 6 หลัก">
+                <label for="craftfrom3qty">Craftfrom1QTY</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="crafttype" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="crafttype">Craft Type</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="InsertRow()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Edit to Itemlist :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="id" type="text" hidden>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_name" type="text" data-length="100" >
+                <label for="edit_name">Name</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="edit_desc" class="materialize-textarea"  data-length="255"></textarea>
+                <label for="edit_desc">Description</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_consumable" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_consumable">Consumable</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_code" type="text"  data-length="50"  placeholder="ไม่เกิน 50 ตัวอักษร">
+                <label for="edit_code">Code</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_isdropinvest" type="text"  data-length="1"  placeholder="ไม่เกิน 1 หลัก">
+                <label for="edit_isdropinvest">Isdropinvest</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_craftfrom1" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_craftfrom1">Craftfrom1</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_craftfrom1qty" type="text"  data-length="6"  placeholder="ไม่เกิน 6 หลัก">
+                <label for="edit_craftfrom1qty">Craftfrom1QTY</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_craftfrom2" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_craftfrom2">Craftfrom2</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_craftfrom2qty" type="text"  data-length="6"  placeholder="ไม่เกิน 6 หลัก">
+                <label for="edit_craftfrom2qty">Craftfrom1QTY</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_craftfrom3" type="text"  data-length="200"  placeholder="ไม่เกิน 200 ตัวอักษร">
+                <label for="edit_craftfrom3">Craftfrom3</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_craftfrom3qty" type="text"  data-length="6"  placeholder="ไม่เกิน 6 หลัก">
+                <label for="edit_craftfrom3qty">Craftfrom1QTY</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_crafttype" type="text"  data-length="4"  placeholder="ไม่เกิน 4 หลัก">
+                <label for="edit_crafttype">Craft Type</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="Edit()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+        </main>
+
+        <footer>
+          <div class="container center-align">
+            <span>Copyright &copy; Magic Fortress</span>
+          </div>
+        </footer>
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script>
+      //Delete row
+      function DeleteRow(id){
+        let r = confirm("ต้องการลบข้อมูล?");
+              if(r == true){
+                $.post("api/delete/delete_itemlist.php",{
+                  id : id,
+                },function(data){
+                  alert('Delete Success!');
+                  $('#table').DataTable().draw();
+                });
+              }else{
+                
+              }
+          
+      }
+
+      function InsertRow(){
+
+          var name = $("#name").val();
+          var desc = $("#desc").val();
+          var consumable = $("#consumable").val();
+          var code = $("#code").val();
+          var isdropinvest = $("#isdropinvest").val();
+          var craftfrom1 = $("#craftfrom1").val();
+          var craftfrom1qty = $("#craftfrom1qty").val();
+          var craftfrom2 = $("#craftfrom2").val();
+          var craftfrom2qty = $("#craftfrom2qty").val();
+          var craftfrom3 = $("#craftfrom3").val();
+          var craftfrom3qty = $("#craftfrom3qty").val();
+          var crafttype = $("#crafttype").val();
+
+
+            $.post("api/insert/add_itemlist.php",{
+                name : name,
+                desc : desc,
+                consumable : consumable,
+                code : code,
+                isdropinvest : isdropinvest,
+                craftfrom1 : craftfrom1,
+                craftfrom1qty : craftfrom1qty,
+                craftfrom2 : craftfrom2,
+                craftfrom2qty : craftfrom2qty,
+                craftfrom3 : craftfrom3,
+                craftfrom3qty : craftfrom3qty,
+                crafttype : crafttype,
+            },function(data){
+              alert('เพิ่มรายการเสร็จสิ้น');
+              $('#table').DataTable().draw();
+            });
+      }
+
+        //Edit row
+        function EditRow(id){
+          $.post("api/select/itemlist.php",{
+              id : id,
+          },function(data){
+            $("#id").attr("value",data.col.ITEM_ID);
+            $("#edit_name").attr("value",data.col.ITEM_NAME);
+            $("#edit_desc").html(data.col.ITEM_DESC);
+            $("#edit_consumable").attr("value",data.col.ITEM_CONSUMABLE);
+            $("#edit_code").html(data.col.ITEM_CODE);
+            $("#edit_isdropinvest").attr("value",data.col.ITEM_ISDROPINVEST);
+            $("#edit_craftfrom1").attr("value",data.col.ITEM_CRAFTFROM1);
+            $("#edit_craftfrom1qty").attr("value",data.col.ITEM_CRAFTFROM1QTY);
+            $("#edit_craftfrom2").attr("value",data.col.ITEM_CRAFTFROM2);
+            $("#edit_craftfrom2qty").attr("value",data.col.ITEM_CRAFTFROM2QTY);
+            $("#edit_craftfrom3").attr("value",data.col.ITEM_CRAFTFROM3);
+            $("#edit_craftfrom3qty").attr("value",data.col.ITEM_CRAFTFROM3QTY);
+            $("#edit_crafttype").attr("value",data.col.ITEM_CRAFTTYPE);
+          },'json').done(function(){
+              M.textareaAutoResize($('#edit_code'));
+              M.textareaAutoResize($('#edit_desc'));
+          });
+
+        }
+
+
+        function Edit(){
+          var d ={
+            id : $("#id").val(),
+            name : $("#edit_name").val(),
+            desc : $("#edit_desc").val(),
+            consumable : $("#edit_consumable").val(),
+            code : $("#edit_code").val(),
+            isdropinvest : $("#edit_isdropinvest").val(),
+            craftfrom1 : $("#edit_craftfrom1").val(),
+            craftfrom1qty : $("#edit_craftfrom1qty").val(),
+            craftfrom2 : $("#edit_craftfrom2").val(),
+            craftfrom2qty : $("#edit_craftfrom2qty").val(),
+            craftfrom3 : $("#edit_craftfrom3").val(),
+            craftfrom3qty : $("#edit_craftfrom3qty").val(),
+            crafttype : $("#edit_crafttype").val(),
+          }
+            $.post("api/update/update_itemlist.php",d,function(data){
+              alert('Update Success!');
+              $('#table').DataTable().draw();
+            });
+        }
+      </script>
+    </body>
+  </html>

@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /*background-color: #000;*/
+     /*background: linear-gradient(to right, #8e9eab, #eef2f3);*/
+     background: linear-gradient(to right, #485563, #29323c);
+  }
+
+main {
+    flex: 1 0 auto;
+
+  }
+
+html, body, .login-box {
+    height: 100%;
+}

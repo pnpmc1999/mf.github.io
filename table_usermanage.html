@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <script type="text/javascript" src="vender/jquery/jquery-3.4.1.min.js"></script>
+
+      <script type="text/javascript" src="function/func.js"></script>
+
+      <script type="text/javascript" src="function/include.js"></script>
+
+
+      <!--Datatable-->
+      <script type="text/javascript" src="//unpkg.com/jquery@1.11.3"></script>
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+      <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json">
+
+
+      <script>
+      $(document).ready( function () {
+        $('input#username, input#userpass, input#fname, input#lname').characterCounter();
+
+        var position ={
+          "1" : "Programmer",
+          "2" : "Tester",
+          "3" : "Support"
+        }
+        var stt ={
+          "0" : "User",
+          "1" : "Admin"
+        }
+
+        $('#table').DataTable({
+          "language": {
+            "url" : "//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json",
+            "decimal":        "",
+            "emptyTable":     "ไม่มีรายการข้อมูล",
+            "info":           "แสดงรายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+            "infoEmpty":      "ไม่มีรายการข้อมูล",
+            "infoFiltered":   "(กรองจากทั้งหมด _MAX_ รายการ)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "แสดง  _MENU_ รายการ",
+            "loadingRecords": "กำลังโหลดข้อมูล...",
+            "processing":     "กำลังประมวลผล...",
+            "search":         "ค้นหา:",
+            "zeroRecords":    "ไม่พบรายการที่ค้นหา",
+            "paginate": {
+                "first":      "หน้าแรก",
+                "last":       "หน้าสุดท้าย",
+                "next":       "ถัดไป",
+                "previous":   "ก่อนหน้า"
+            },
+            "aria": {
+                "sortAscending":  ": เรียงข้อมูลจากน้อยไปมาก",
+                "sortDescending": ": เรียงข้อมูลจากมากไปน้อย"
+            }
+          },
+
+          "processing": true,
+          "serverSide": true,
+          "ajax": "api/select/datatable_users.php",
+
+          "columnDefs": [
+            {
+              "targets": 6,
+              "createdCell": function (td, cellData, rowData, row, col) {
+                 $(td).html( position[cellData])
+                 }
+           },
+           {
+              "targets": 7,
+              "createdCell": function (td, cellData, rowData, row, col) {
+                $(td).html( stt[cellData])
+                }
+          },
+          {
+              "targets": 3 ,
+              "visible": false
+          }
+
+
+         ],
+
+          "scrollX" : true,
+          "scrollY" : 400,
+
+
+
+
+        });
+
+
+
+      });
+      </script>
+
+    </head>
+      <title>User Management</title>
+
+
+    <body id="bd">
+
+        <main>
+          <header>
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+              <li><div class="user-view">
+                <div class="background">
+                  <img src="img/logo2.png">
+                </div>
+                <a href="#"><img class="circle" src="img/bg_log.png"></a>
+                <a href="#" class="uname" style="font-size:20px;"></a>
+              </div>
+            </li>
+            <li class="pg-hide sp-hide tt-hide"><a class="subheader">Main List</a></li>
+            <li class="pg-hide sp-hide tt-hide active"><a href="homepage.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">view_list</i>Tables<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li class="tt-hide sp-hide"><a href="table_equiplist.html"><i class="material-icons left">chevron_right</i>Equiplist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_itemlist.html"><i class="material-icons left">chevron_right</i>Itemlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_questlist.html"><i class="material-icons left">chevron_right</i>Questlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_spelllist.html"><i class="material-icons left">chevron_right</i>Spellist</a></li>
+                          <li class="tt-hide "><a href="table_news.html"><i class="material-icons left">chevron_right</i>News</a></li>
+                          <li ><a href="table_bugs.html"><i class="material-icons left">chevron_right</i>Bugs</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">show_chart</i>Charts<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                    
+                          <li class=""><a href="report_bugs.html"><i class="material-icons left">bug_report</i>Bug Report</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li class="pg-hide tt-hide sp-hide"><div class="divider"></div></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="subheader">Sub List</a></li>
+              <li hidden ><a class="waves-effect" href="profile.html"><i class="material-icons left">account_circle</i>Profile</a></li>
+              <li class="pg-hide tt-hide sp-hide active"><a class="waves-effect" href="table_usermanage.html"><i class="material-icons left">supervisor_account</i>Users Management </a></li>
+            </ul>
+          </header>
+
+          <nav>
+            <div class="nav-wrapper ">
+              <!--<a href="#" class="brand-logo"><img style="width:120px; padding-left:20px; padding-top:7px;" src="img/logo2.png"></a>-->
+              <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                <li><a  class="pos tooltipped" data-position="bottom" data-tooltip="ตำแหน่งงาน"></a></li>
+                <li><a  class="status tooltipped" data-position="bottom" data-tooltip="สถานะสิทธิ์"></a></li>
+                <li><a href="#" id="logout_btn" >Logout<i class="material-icons right">exit_to_app</i></a></li>
+              </ul>
+            </div>
+          </nav>
+
+
+
+        <div class="container" style="margin-top:2%;">
+            <div class="row">
+              <button data-target='modal1'  class="btn blue lighten-1 white-text right modal-trigger"><i class="material-icons left">add</i>Add new</button>
+            </div>
+            <table id="table" class="display" >
+                <thead>
+                    <tr>
+                      <th style="width:150px;" class="center">Action</th>
+                      <th style="width:50px;" class="center">ID</th>
+                      <th style="width:150px;" class="center">บัญชีผู้ใช้</th>
+                      <th class="center">รหัสผ่าน</th>
+                      <th style="width:150px;" class="center">ชื่อ</th>
+                      <th style="width:150px;" class="center">นามสกุล</th>
+                      <th style="width:100px;" class="center">ตำแหน่งงาน</th>
+                      <th style="width:100px;" class="center">สถานะ</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Insert to Users :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="username" type="text" data-length="25" placeholder="ไม่เกิน 25 ตัวอักษร">
+                <label for="username">Username</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="userpass" type="password"  data-length="32" placeholder="ไม่เกิน 32 ตัวอักษร">
+                <label for="userpass">Password</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="fname" type="text"  data-length="25" placeholder="ไม่เกิน 25 ตัวอักษร">
+                <label for="fname">First name</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="lname" type="text" data-length="25" placeholder="ไม่เกิน 25 ตัวอักษร">
+                <label for="lname">Last name</label>
+              </div>
+              <div class="input-field col s12">
+                   <select class="disabled selected" id="position">
+                     <option value="" disabled selected>Choose Position</option>
+                     <option value="1">Programmer</option>
+                     <option value="2">Tester</option>
+                     <option value="3">Support</option>
+                   </select>
+                   <label>Position</label>
+              </div>
+              <div class="input-field col s12">
+                   <select class="disabled selected" id="status">
+                     <option value="" disabled selected>Choose Status</option>
+                     <option value="0">User</option>
+                     <option value="1">Admin</option>
+                   </select>
+                  <label>Status</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!"  class="btn-flat left modal-close">Close</a>
+      <a href="#!"onclick="InsertRow()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Edit to Users :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="id" type="text" data-length="25" hidden>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_username" type="text" data-length="25" placeholder="ไม่เกิน 25 ตัวอักษร">
+                <label for="edit_username">Username</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_fname" type="text"  data-length="25" placeholder="ไม่เกิน 25 ตัวอักษร">
+                <label for="edit_fname">First name</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_lname" type="text" data-length="25" placeholder="ไม่เกิน 25 ตัวอักษร">
+                <label for="edit_lname">Last name</label>
+              </div>
+              <div class="input-field  col s12">
+                   <select class="" id="edit_position">
+                     <option value="" disabled selected>Choose Position</option>
+                     <option value="1" id="pg">Programmer</option>
+                     <option value="2" id="tt">Tester</option>
+                     <option value="3" id="sp">Support</option>
+                   </select>
+                   <label>Position</label>
+              </div>
+              <div class="input-field col s12">
+                   <select class="" id="edit_status">
+                     <option value="" disabled selected>Choose Status</option>
+                     <option value="0">User</option>
+                     <option value="1">Admin</option>
+                   </select>
+                  <label>Status</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="btn-flat left modal-close">Close</a>
+      <a href="#!"onclick="Edit()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+
+        </main>
+
+        <footer>
+          <div class="container center-align">
+            <span>Copyright &copy; Magic Fortress</span>
+          </div>
+        </footer>
+
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script>
+      //Delete row
+      function DeleteRow(id){
+        let r = confirm("ต้องการลบข้อมูล?");
+              if(r == true){
+                $.post("api/delete/delete_users.php",{
+                  id : id,
+                },function(data){
+                  alert('Delete Success!');
+                  $('#table').DataTable().draw();
+                });
+              }else{
+                
+              }
+      }
+
+      //Edit row
+      function EditRow(id){
+        $.post("api/select/users.php",{
+            id : id,
+        },function(data){
+          $("#id").attr("value",data.col.USER_NO);
+          $("#edit_username").attr("value",data.col.USERNAME);
+          $("#edit_fname").attr("value",data.col.USER_FNAME);
+          $("#edit_lname").attr("value",data.col.USER_LNAME);
+          $("#edit_position option[value="+data.col.USER_POSITION+"]").prop("selected",true);
+          $("#edit_status option[value="+data.col.USER_TYPE+"]").prop("selected",true);
+
+
+          //var pos = data.col.USER_POSITION;
+          //var stt = data.col.USER_TYPE;
+
+        //  $("#edit_position option[value="+ data.col.USER_POSITION +"]").attr("selected", true);
+        //  $("#edit_status option[value="+ data.col.USER_TYPE +"]").attr("selected", true);
+
+      },'json').done(function(){
+          $('select').formSelect();
+      });
+
+      }
+
+
+      function Edit(){
+        var d ={
+          id : $("#id").val(),
+          username : $("#edit_username").val(),
+          fname : $("#edit_fname").val(),
+          lname : $("#edit_lname").val(),
+          position : $("#edit_position").val(),
+          status : $("#edit_status").val(),
+        }
+          $.post("api/update/update_users.php",d,function(data){
+            alert('Update Success!');
+            $('#table').DataTable().draw();
+          });
+      }
+
+      //Add row
+      /*
+      function AddRow(){
+
+        var showrow = "<tr><td><button onclick='InsertRow()' class='insertrow btn green lighten-1 btn-small white-text'>Insert</button></td>"+
+        "<td>#</td>"+
+        "<td id='data1' contenteditable></td>"+
+        "<td id='data2' contenteditable></td>"+
+        "<td id='data3' contenteditable></td>"+
+        "<td id='data4' contenteditable></td>"+
+        "<td id='data5' contenteditable></td>"+
+        "<td id='data6' contenteditable></td></tr>";
+        $("#table tbody").prepend(showrow);
+      }*/
+
+      //insert
+        function InsertRow(){
+        /*
+        var username = $("#data1").text();
+        var pass = $("#data2").text();
+        var fname = $("#data3").text();
+        var lname = $("#data4").text();
+        var position = $("#data5").text();
+        var status = $("#data6").text();
+        */
+        var username = $("#username").val();
+        var pass = $("#userpass").val();
+        var fname = $("#fname").val();
+        var lname = $("#lname").val();
+        var position = $("#position").val();
+        var status = $("#status").val();
+
+       if(username != "" && fname != "" && lname != "" && position !="" && status !=""){
+          $.post("api/insert/add_users.php",{
+              username : username,
+              pass : pass,
+              fname : fname,
+              lname : lname,
+              position : position,
+              status : status,
+          },function(data){
+            alert('เพิ่มรายการเสร็จสิ้น');
+            $('#table').DataTable().draw();
+          });
+        }else{
+          alert("กรุณากรอกข้อมูลให้ครบ");
+        }
+
+    }
+
+
+      </script>
+
+    </body>
+  </html>

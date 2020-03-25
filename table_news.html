@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <script type="text/javascript" src="vender/jquery/jquery-3.4.1.min.js"></script>
+
+      <script type="text/javascript" src="function/include.js"></script>
+
+      <script type="text/javascript" src="function/func.js"></script>
+
+
+      <!--Datatable-->
+
+        <script type="text/javascript" src="//unpkg.com/jquery@1.11.3"></script>
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+      <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json">
+
+
+      <script >
+      $(document).ready( function () {
+        $('input#title').characterCounter();
+
+        var news = {
+          "1" : "ข่าวสารการแก้ไข",
+          "2" : "ข่าวสารทั่วไป"
+        }
+
+        $('#table').DataTable({
+          "language": {
+            "url" : "//cdn.datatables.net/plug-ins/1.10.20/i18n/Thai.json",
+            "decimal":        "",
+            "emptyTable":     "ไม่มีรายการข้อมูล",
+            "info":           "แสดงรายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+            "infoEmpty":      "ไม่มีรายการข้อมูล",
+            "infoFiltered":   "(กรองจากทั้งหมด _MAX_ รายการ)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "แสดง  _MENU_ รายการ",
+            "loadingRecords": "กำลังโหลดข้อมูล...",
+            "processing":     "กำลังประมวลผล...",
+            "search":         "ค้นหา:",
+            "zeroRecords":    "ไม่พบรายการที่ค้นหา",
+            "paginate": {
+                "first":      "หน้าแรก",
+                "last":       "หน้าสุดท้าย",
+                "next":       "ถัดไป",
+                "previous":   "ก่อนหน้า"
+            },
+            "aria": {
+                "sortAscending":  ": เรียงข้อมูลจากน้อยไปมาก",
+                "sortDescending": ": เรียงข้อมูลจากมากไปน้อย"
+            }
+          },
+
+          "processing": true,
+          "serverSide": true,
+          "ajax": "api/select/datatable_news.php",
+
+          "scrollX" : true,
+          "scrollY" : 400,
+
+          "columnDefs": [
+            {
+              "targets": 6,
+              "createdCell": function (td, cellData, rowData, row, col) {
+                 $(td).html( news[cellData])
+               }
+            }
+          ],
+
+
+        });
+
+      });
+      </script>
+
+    </head>
+      <title>News</title>
+
+
+    <body id="bd">
+
+        <main>
+          <header>
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+              <li><div class="user-view">
+                <div class="background">
+                  <img src="img/logo2.png">
+                </div>
+                <a href="#"><img class="circle" src="img/bg_log.png"></a>
+                <a href="#" class="uname" style="font-size:20px;"></a>
+              </div>
+            </li>
+            <li class="pg-hide sp-hide tt-hide"><a class="subheader">Main List</a></li>
+            <li class="pg-hide sp-hide tt-hide active"><a href="homepage.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">view_list</i>Tables<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li class="tt-hide sp-hide"><a href="table_equiplist.html"><i class="material-icons left">chevron_right</i>Equiplist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_itemlist.html"><i class="material-icons left">chevron_right</i>Itemlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_questlist.html"><i class="material-icons left">chevron_right</i>Questlist</a></li>
+                          <li class="tt-hide sp-hide"><a href="table_spelllist.html"><i class="material-icons left">chevron_right</i>Spellist</a></li>
+                          <li class="tt-hide  active"><a href="table_news.html"><i class="material-icons left">chevron_right</i>News</a></li>
+                          <li ><a href="table_bugs.html"><i class="material-icons left">chevron_right</i>Bugs</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li  style="padding-left:16px;">
+                  <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                      <a class="collapsible-header"><i class="material-icons left">show_chart</i>Charts<i class="material-icons right">arrow_drop_down</i></a>
+                      <div class="collapsible-body">
+                        <ul>
+                         
+                          <li class=""><a href="report_bugs.html"><i class="material-icons left">bug_report</i>Bug Report</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </li>
+              <li class="pg-hide tt-hide sp-hide"><div class="divider"></div></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="subheader">Sub List</a></li>
+              <li hidden ><a class="waves-effect" href="profile.html"><i class="material-icons left">account_circle</i>Profile</a></li>
+              <li class="pg-hide tt-hide sp-hide"><a class="waves-effect" href="table_usermanage.html"><i class="material-icons left">supervisor_account</i>Users Management </a></li>
+            </ul>
+          </header>
+
+          <nav>
+            <div class="nav-wrapper ">
+              <!--<a href="#" class="brand-logo"><img style="width:120px; padding-left:20px; padding-top:7px;" src="img/logo2.png"></a>-->
+              <ul id="nav-mobile" class="right hide-on-med-and-down ">
+                <li><a  class="pos tooltipped" data-position="bottom" data-tooltip="ตำแหน่งงาน"></a></li>
+                <li><a  class="status tooltipped" data-position="bottom" data-tooltip="สถานะสิทธิ์"></a></li>
+                <li><a href="#" id="logout_btn" >Logout<i class="material-icons right">exit_to_app</i></a></li>
+              </ul>
+            </div>
+          </nav>
+
+
+        <div class="container" style="margin-top:2%;">
+          <div class="row">
+              <button data-target='modal1'  class="btn blue lighten-1 white-text right modal-trigger"><i class="material-icons left">add</i>Add new</button>
+          </div>
+            <table id="table" class="display" >
+                <thead>
+                    <tr>
+                      <th style="width:150px;">Action</th>
+                      <th>ID</th>
+                      <th>DATE</th>
+                      <th>TITLE</th>
+                      <th>BODY</th>
+                      <th>BODYSHORT</th>
+                      <th>TYPE</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Insert to News :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="title" type="text" data-length="255" placeholder="ไม่เกิน 255 ตัวอักษร">
+                <label for="title">News Title</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="body" class="materialize-textarea"></textarea>
+                <label for="body"> News Body</label>
+              </div>
+              <div class="input-field col s12">
+                 <textarea id="short" class="materialize-textarea"></textarea>
+                <label for="short">Body Short</label>
+              </div>
+              <div class="input-field col s12">
+                   <select class="disabled selected" id="type">
+                     <option value="" disabled selected>Choose Type</option>
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                   </select>
+                  <label>News Type</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="InsertRow()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Edit to News :</h4>
+        <div class="row">
+          <form class="col s12" style="padding:20px;">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="id" type="text" hidden>
+              </div>
+              <div class="input-field col s12">
+                <input id="edit_title" type="text" data-length="255" placeholder="ไม่เกิน 255 ตัวอักษร">
+                <label for="edit_title">News Title</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="edit_body" class="materialize-textarea"></textarea>
+                <label  for="edit_body"> News Body</label>
+              </div>
+              <div class="input-field col s12">
+                 <textarea id="edit_short" class="materialize-textarea"></textarea>
+                <label  for="edit_short">Body Short</label>
+              </div>
+              <div class="input-field col s12">
+                   <select class="disabled selected" id="edit_type">
+                     <option value="" disabled selected>Choose Type</option>
+                     <option value="1">ข่าวการแก้ไข</option>
+                     <option value="2">ข่าวสารทั่วไป</option>
+                   </select>
+                  <label>News Type</label>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn-flat left">Close</a>
+      <a href="#!"onclick="Edit()" class="modal-close btn green lighten-1 white-text">Agree</a>
+    </div>
+  </div>
+
+        </main>
+
+        <footer>
+          <div class="container center-align">
+            <span>Copyright &copy; Magic Fortress</span>
+          </div>
+        </footer>
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script>
+      //Delete row
+      function DeleteRow(id){
+        let r = confirm("ต้องการลบข้อมูล?");
+              if(r == true){
+                $.post("api/delete/delete_news.php",{
+                  id : id,
+                },function(data){
+                  alert('Delete Success!');
+                  $('#table').DataTable().draw();
+                });
+              }else{
+                
+              }
+
+      }
+
+      function InsertRow(){
+
+          var title = $("#title").val();
+          var body = $("#body").val();
+          var short = $("#short").val();
+          var type = $("#type").val();
+
+         if(title != "" && body != "" && short != "" && type !=""){
+            $.post("api/insert/add_news.php",{
+                title : title,
+                body : body,
+                short : short,
+                type : type,
+            },function(data){
+              alert('เพิ่มรายการเสร็จสิ้น');
+              $('#table').DataTable().draw();
+            });
+          }else{
+            alert("กรุณากรอกข้อมูลให้ครบ");
+          }
+
+      }
+
+      //Edit row
+      function EditRow(id){
+        $.post("api/select/news.php",{
+            id : id,
+        },function(data){
+          $("#id").attr("value",data.col.NEWS_ID);
+          $("#edit_title").attr("value",data.col.NEWS_TITLE);
+          $("#edit_body").html(data.col.NEWS_BODY);
+          $("#edit_short").html(data.col.NEWS_BODYSHORT);
+          $("#edit_type option[value="+data.col.NEWS_TYPE+"]").prop("selected",true);
+
+        },'json').done(function(){
+            $('select').formSelect();
+            M.textareaAutoResize($('#edit_body'));
+            M.textareaAutoResize($('#edit_short'));
+        });
+
+      }
+
+
+      function Edit(){
+        var d ={
+          id : $("#id").val(),
+          title : $("#edit_title").val(),
+          body : $("#edit_body").val(),
+          short : $("#edit_short").val(),
+          type : $("#edit_type").val(),
+        }
+          $.post("api/update/update_news.php",d,function(data){
+            alert('Update Success!');
+            $('#table').DataTable().draw();
+          });
+      }
+      </script>
+    </body>
+  </html>
